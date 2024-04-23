@@ -8,7 +8,7 @@ class LowerLimbsMeasurements:
         while True:
 
             try:
-                self.legs = float(input("Leg Length [cm / measure from foot to hips]: ").strip())
+                self.legs = float(input("Leg length [cm / measure from foot to hips]: ").strip())
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
                 continue
