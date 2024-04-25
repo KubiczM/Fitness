@@ -117,8 +117,7 @@ class PersonalInfo:
     def sex_info(self):
         while True:
             try:
-                self.sex = input(
-                    "Gender [female/male]: ").strip().lower()
+                self.sex = input("Gender [female/male]: ").strip().lower()
                 if not self.sex.isalpha() or self.sex not in ["female", "male"]:
                     raise ValueError("Invalid input, must contain only 'female' or 'male'")
                 return self.sex
@@ -174,12 +173,8 @@ class PersonalInfo:
         while True:
 
             try:
-                print(
-                    "Specify your activity: 1 -> Low, 2 -> Moderate, 3 -> Active lifestyle, 4 -> Very active"
-                )
-                self.activity = int(
-                    input("Enter a number [from the scale above]: ").strip()
-                )
+                print("Specify your activity: 1 -> Low, 2 -> Moderate, 3 -> Active lifestyle, 4 -> Very active")
+                self.activity = int(input("Enter a number [from the scale above]: ").strip())
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
                 continue
@@ -194,12 +189,8 @@ class PersonalInfo:
         while True:
 
             try:
-                print(
-                    "Specify your calories balance: 1 -> Deficit, 2 -> N/A, 3 -> Surplus"
-                )
-                self.question = int(
-                    input("Enter a number [from the scale above]: ").strip()
-                )
+                print("Specify your calories balance: 1 -> Deficit, 2 -> N/A, 3 -> Surplus")
+                self.question = int(input("Enter a number [from the scale above]: ").strip())
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
                 continue
