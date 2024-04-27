@@ -19,6 +19,9 @@ class PersonalInfo:
         self.age = 0
         self.activity = 1
         self.question = 2
+        self.basic_metabolic = None
+        self.total_metabolic = None
+        self.cal_balance = None
         self.lower_limbs = LowerLimbsMeasurements()
         self.upper_limbs = UpperLimbsMeasurements()
         self.arms = Arms(wingspan=0, height=0)
