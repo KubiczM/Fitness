@@ -9,9 +9,9 @@ Features:
 
 1. Calorie Calculation
    Based on the parameters provided by the user (age, weight, height, activity level), the application calculates:
-   -> Calorie Deficit – for those aiming to lose weight,
-   -> Required Calorie Intake – for those maintaining their current body weight,
-   -> Calorie Surplus – for those aiming to gain weight.
+   -> Calorie Deficit (for those aiming to lose weight),
+   -> Required Calorie Intake (for those maintaining their current body weight),
+   -> Calorie Surplus (for those aiming to gain weight).
 2. Exercise Suggestions
    -> The program suggests ideal exercises tailored to the user's parameters, taking into account their goals (weight
       loss, muscle building, general fitness improvement) and fitness level.
