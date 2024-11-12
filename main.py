@@ -48,5 +48,20 @@ def open_json_file():
         continue
 
 
-create_json_file()
-# open_json_file()
+def run():
+    while True:
+        choice = input("Choose an option:\n1. Create JSON file\n2. Open JSON file\n3. Exit\nEnter your choice: ")
+
+        if choice == "1":
+            create_json_file()
+        elif choice == "2":
+            open_json_file()
+        elif choice == "3":
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please select 1, 2, or 3.")
+
+
+if __name__ == "__main__":
+    run()
