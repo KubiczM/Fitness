@@ -1,3 +1,18 @@
+"""
+Client Data Management System
+
+This script allows creating and retrieving client data stored in JSON files.
+Each client has a unique directory where their data is saved.
+
+Functions:
+- create_json_file: Collects client data and saves it as a JSON file.
+- open_json_file: Allows retrieving and displaying client data from a JSON file.
+- run: Provides a command-line interface for users to create or retrieve data.
+
+Usage:
+Run the script and follow the prompts to either create a new JSON file or open an existing one.
+"""
+
 import json
 import os
 from datetime import datetime

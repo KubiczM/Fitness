@@ -1,3 +1,25 @@
+"""
+Total Metabolic Rate Calculator
+
+This class calculates the Total Daily Energy Expenditure (TDEE) based on activity level and Basal Metabolic Rate (BMR).
+
+Class:
+- TotalMetabolic: Uses a given BMR and activity level to estimate daily caloric needs.
+
+Methods:
+- total_metabolic:
+  - Multiplies the BMR by an activity factor to determine total metabolic rate.
+  - Activity levels:
+    - 1: Sedentary (BMR × 1.4)
+    - 2: Light activity (BMR × 1.6)
+    - 3: Moderate activity (BMR × 1.8)
+    - 4: Very active (BMR × 2.0)
+
+Usage:
+Create an instance of `TotalMetabolic` with a `BasicMetabolic` object and activity level (1-4).
+Call `total_metabolic()` to get the estimated total caloric needs.
+"""
+
 class TotalMetabolic:
     def __init__(self, activity, basic_metabolic):
         self.total_metabolic_rate = 0

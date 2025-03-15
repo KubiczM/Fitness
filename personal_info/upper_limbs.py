@@ -1,3 +1,22 @@
+"""
+Upper Limb Measurements
+
+This class collects and stores measurements of the upper limbs,
+including wingspan, ulna, and humerus lengths.
+
+Class:
+- UpperLimbsMeasurements: Handles user input for upper limb dimensions.
+
+Methods:
+- wingspan_info: Captures wingspan length from fingertip to fingertip.
+- ulna_info: Captures ulna length from elbow to wrist.
+- humerus_info: Captures humerus length from shoulder to elbow.
+
+Usage:
+Create an instance of `UpperLimbsMeasurements` and call methods to input measurements.
+Values are validated to ensure correctness.
+"""
+
 class UpperLimbsMeasurements:
     def __init__(self):
         self.wingspan = 0

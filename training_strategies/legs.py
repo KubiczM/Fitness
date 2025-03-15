@@ -1,3 +1,22 @@
+"""
+Legs Training Strategies
+
+This class provides exercise recommendations based on the relationship between leg length and height,
+focused on leg development, including quads, hamstrings, glutes, and calves.
+
+Class:
+- Legs: Offers exercise strategies for leg training.
+
+Methods:
+- legs_strategies: Determines recommended exercises based on leg length and height.
+
+Usage:
+Create an instance of `Legs` with leg length, tibia, height, and femur measurements,
+then call `legs_strategies` to get a list of suggested exercises.
+The exercises are categorized based on whether the individual has long or short legs.
+A conclusion is provided for which muscles are easiest to develop based on leg length.
+"""
+
 class Legs:
     def __init__(self, legs, tibia, height, femur):
         self.legs = legs

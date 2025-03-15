@@ -1,3 +1,22 @@
+"""
+Caloric Balance Calculator
+
+This class calculates daily caloric needs based on total metabolic rate and user goals.
+
+Class:
+- CalBalance: Determines caloric intake based on whether the user wants a caloric deficit, maintenance, or surplus.
+
+Methods:
+- balance_cal:
+  - Option 1: Returns a 15% caloric deficit.
+  - Option 2: Returns the maintenance caloric intake.
+  - Option 3: Returns a 15% caloric surplus.
+
+Usage:
+Create an instance of `CalBalance` with the total metabolic rate and a goal selection (1, 2, or 3).
+Call `balance_cal()` to get the recommended caloric intake.
+"""
+
 class CalBalance:
     def __init__(self, total_metabolic, question):
         self.deficit_result = 0

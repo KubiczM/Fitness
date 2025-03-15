@@ -1,3 +1,22 @@
+"""
+Lower Limb Measurements
+
+This class collects and stores measurements of the lower limbs,
+including total leg length, tibia, and femur.
+
+Class:
+- LowerLimbsMeasurements: Manages user input for lower limb dimensions.
+
+Methods:
+- legs_info: Captures leg length from foot to hips.
+- tibia_info: Captures tibia length from knee to ankle.
+- femur_info: Captures femur length from knee to hips.
+
+Usage:
+Create an instance of `LowerLimbsMeasurements` and call methods to input measurements.
+Values are validated to ensure correctness.
+"""
+
 class LowerLimbsMeasurements:
     def __init__(self):
         self.legs = 0

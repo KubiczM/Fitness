@@ -1,3 +1,21 @@
+"""
+Back Training Strategies
+
+This class provides exercise recommendations based on the relationship between wingspan and height,
+focusing on back development, including latissimus dorsi, rear delts, rhomboids, and traps.
+
+Class:
+- Back: Offers exercise strategies for back training.
+
+Methods:
+- back_strategies: Determines recommended exercises based on wingspan and height.
+
+Usage:
+Create an instance of `Back` with wingspan and height, then call `back_strategies` to get a list of suggested exercises.
+The exercises are categorized based on whether the individual has long or short arms.
+A conclusion is provided for which muscles are easiest to develop based on arm length.
+"""
+
 class Back:
     def __init__(self, wingspan, height):
         self.wingspan = wingspan

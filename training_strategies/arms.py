@@ -1,3 +1,20 @@
+"""
+Arms Training Strategies
+
+This class provides exercise recommendations based on the relationship between wingspan and height,
+focusing on biceps and triceps development.
+
+Class:
+- Arms: Offers exercise strategies for biceps and triceps training.
+
+Methods:
+- arms_strategies: Determines recommended exercises based on wingspan and height.
+
+Usage:
+Create an instance of `Arms` with wingspan and height, then call `arms_strategies` to get a list of suggested exercises.
+The exercises are categorized into biceps and triceps routines.
+"""
+
 class Arms:
     def __init__(self, wingspan, height):
         self.wingspan = wingspan
