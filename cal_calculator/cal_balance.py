@@ -17,6 +17,7 @@ Create an instance of `CalBalance` with the total metabolic rate and a goal sele
 Call `balance_cal()` to get the recommended caloric intake.
 """
 
+
 class CalBalance:
     def __init__(self, total_metabolic, question):
         self.deficit_result = 0

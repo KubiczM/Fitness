@@ -20,6 +20,7 @@ Create an instance of `TotalMetabolic` with a `BasicMetabolic` object and activi
 Call `total_metabolic()` to get the estimated total caloric needs.
 """
 
+
 class TotalMetabolic:
     def __init__(self, activity, basic_metabolic):
         self.total_metabolic_rate = 0

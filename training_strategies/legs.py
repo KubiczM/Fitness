@@ -17,6 +17,7 @@ The exercises are categorized based on whether the individual has long or short 
 A conclusion is provided for which muscles are easiest to develop based on leg length.
 """
 
+
 class Legs:
     def __init__(self, legs, tibia, height, femur):
         self.legs = legs

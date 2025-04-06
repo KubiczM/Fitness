@@ -1,17 +1,19 @@
 """
 JSON Operations for Client Data Management
 
-This script provides functions for managing client data stored in JSON files.
-It includes functionalities to collect and save client data in a client-specific JSON file,
-as well as to retrieve and display the saved client data from a specified JSON file.
+This script provides functions to manage client data stored in JSON files.
+It allows you to create new client data, save it in a client-specific JSON file, and retrieve and display saved
+client data.
 
 Functions:
-- create_client_data: Collects client data and saves it as a JSON file in the client-specific directory.
-- open_client_data: Allows retrieving and displaying client data from a specified JSON file.
+- create_client_data: Collects client data and saves it as a JSON file in a unique directory for each client.
+- open_client_data: Retrieves and displays client data from a selected JSON file within a chosen client's directory.
+- display_client_data: Displays the details of the selected client's data, including personal information,
+body measurements, and workout strategies.
 
 Usage:
-- Use create_client_data() to generate and save a new JSON file with client data.
-- Use open_client_data() to load and display the data from an existing JSON file.
+- Use create_client_data() to gather and save a new client’s data into a JSON file.
+- Use open_client_data() to select an existing client, browse their files, and view the saved data.
 """
 
 import json
@@ -51,54 +53,130 @@ def create_client_data():
 
 
 def open_client_data():
-    while True:
-        clients_directory = "clients"
-        print("\nAvailable client directories:")
-        if os.path.exists(clients_directory):
-            for client_dir in os.listdir(clients_directory):
-                client_dir_path = os.path.join(clients_directory, client_dir)
+    print("\nSaved Clients:")
+    clients_directory = "clients"
 
-                if os.path.isdir(client_dir_path):
-                    print(f"\nClient: {client_dir}")
-                    json_files = [f for f in os.listdir(client_dir_path) if f.endswith(".json")]
-                    if json_files:
-                        for idx, file in enumerate(json_files, start=1):
-                            print(f"  {idx}. {file}")
-                    else:
-                        print("No JSON files found.")
-        else:
-            print("No client directories found.")
+    clients = []
+    for client_dir in os.listdir(clients_directory):
+        client_dir_path = os.path.join(clients_directory, client_dir)
+        if os.path.isdir(client_dir_path):
+            clients.append(client_dir)
 
-        client_name = input("\nEnter the client name (or type 'exit' to quit): ")
+    if not clients:
+        print("No clients found.")
+        return
 
-        if client_name.lower() == 'exit':
-            break
+    for index, client in enumerate(clients, start=1):
+        print(f"{index}. {client}")
 
-        client_directory = os.path.join(clients_directory, client_name)
+    client_choice = input("Choose a client by number: ")
+    try:
+        client_index = int(client_choice) - 1
+        selected_client = clients[client_index]
+    except (ValueError, IndexError):
+        print("Invalid choice. Exiting.")
+        return
 
-        if os.path.isdir(client_directory):
-            json_files = [f for f in os.listdir(client_directory) if f.endswith(".json")]
-            if json_files:
-                print(f"\nContents of {client_name}:")
-                for idx, file in enumerate(json_files, start=1):
-                    print(f"{idx}. {file}")
+    client_dir_path = os.path.join(clients_directory, selected_client)
+    client_files = []
+    for file in os.listdir(client_dir_path):
+        if file.endswith(".json"):
+            client_files.append(file)
 
-                file_choice = input("\nEnter the number of the file to open: ")
-                try:
-                    file_name = json_files[int(file_choice) - 1]
-                    file_path = os.path.join(client_directory, file_name)
+    if not client_files:
+        print(f"No data files found for {selected_client}.")
+        return
 
-                    if os.path.exists(file_path):
-                        with open(file_path, "r") as file:
-                            data = json.load(file)
-                            print("Data loaded successfully:", data)
-                        break
-                except (ValueError, IndexError):
-                    print("Invalid choice. Please try again.")
-            else:
-                print("No JSON files found for this client.")
-        else:
-            print(f"The directory for client '{client_name}' does not exist. Please try again.")
+    print(f"\nAvailable files for {selected_client}:")
+    for index, file in enumerate(client_files, start=1):
+        print(f"{index}. {file}")
+
+    file_choice = input("Choose a file by number: ")
+    try:
+        file_index = int(file_choice) - 1
+        selected_file = client_files[file_index]
+    except (ValueError, IndexError):
+        print("Invalid choice. Exiting.")
+        return
+
+    file_path = os.path.join(client_dir_path, selected_file)
+
+    with open(file_path, "r") as file:
+        data = json.load(file)
+
+    display_client_data(data)
 
 
+def display_client_data(data):
+    print("\nClient Data:")
+    print(f"First Name: {data['first name']}")
+    print(f"Last Name: {data['last name']}")
+    print(f"Sex: {data['sex']}")
+    print(f"Body Weight: {data['body weight [kg]']} kg")
+    print(f"Height: {data['height [cm]']} cm")
+    print(f"Age: {data['age [years]']} years")
+    print(f"Basic Metabolic Rate: {data['basic metabolic [cal]']} cal")
+    print(f"Total Metabolic Rate: {data['total metabolic [cal]']} cal")
+    print(f"Calories Balance: {data['calories balance [cal]']} cal")
 
+    print("\nLegs Measurements:")
+    print(f"- Legs: {data['legs']['legs [cm]']} cm")
+    print(f"- Tibia: {data['legs']['tibia [cm]']} cm")
+    print(f"- Femur: {data['legs']['femur [cm]']} cm")
+
+    print("\nUpper Limbs Measurements:")
+    print(f"- Wingspan: {data['upper limbs']['wingspan [cm]']} cm")
+    print(f"- Ulna: {data['upper limbs']['ulna [cm]']} cm")
+    print(f"- Humerus: {data['upper limbs']['humerus [cm]']} cm")
+
+    print("\nArms Strategy:")
+    print("Biceps Exercises:")
+    for exercise in data["arms strategy"]["biceps"]:
+        print(f"  - {exercise}")
+
+    print("Triceps Exercises:")
+    for exercise in data["arms strategy"]["triceps"]:
+        print(f"  - {exercise}")
+
+    print("\nChest Strategy:")
+    print("Exercises based on arms length:")
+
+    arm_type = (
+        "long arms" if data["upper limbs"]["wingspan [cm]"] > 150 else "short arms"
+    )
+
+    if arm_type in data["chest strategy"]:
+        for exercise in data["chest strategy"][arm_type]:
+            print(f"  - {exercise}")
+    else:
+        print(f"No exercises found for {arm_type}.")
+
+    print("\nConclusion for Chest:")
+    for line in data["chest strategy"]["conclusion"]:
+        print(f"  - {line}")
+
+    print("\nBack Strategy:")
+    print("Exercises based on arms length:")
+
+    if arm_type in data["back strategy"]:
+        for exercise in data["back strategy"][arm_type]:
+            print(f"  - {exercise}")
+    else:
+        print(f"No exercises found for {arm_type}.")
+
+    print("\nConclusion for Back:")
+    for line in data["back strategy"]["conclusion"]:
+        print(f"  - {line}")
+
+    print("\nLegs Strategy:")
+    leg_type = "short legs" if data["legs"]["legs [cm]"] < 50 else "long legs"
+
+    if leg_type in data["legs strategy"]:
+        for exercise in data["legs strategy"][leg_type]:
+            print(f"  - {exercise}")
+    else:
+        print(f"No exercises found for {leg_type}.")
+
+    print("\nConclusion for Legs:")
+    for line in data["legs strategy"]["conclusion"]:
+        print(f"  - {line}")

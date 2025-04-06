@@ -59,7 +59,9 @@ class PersonalInfo:
         self.age_info()
         print()
         self.activity_info()
-        self.basic_metabolic = BasicMetabolic(self.sex, self.body_weight, self.height, self.age)
+        self.basic_metabolic = BasicMetabolic(
+            self.sex, self.body_weight, self.height, self.age
+        )
         self.total_metabolic = TotalMetabolic(self.activity, self.basic_metabolic)
         self.basic_metabolic.basic_metabolic()
         self.total_metabolic.total_metabolic()
@@ -85,7 +87,8 @@ class PersonalInfo:
             legs=self.lower_limbs.legs,
             tibia=self.lower_limbs.tibia,
             height=self.height,
-            femur=self.lower_limbs.femur)
+            femur=self.lower_limbs.femur,
+        )
         print()
 
         info = {
@@ -143,7 +146,9 @@ class PersonalInfo:
             try:
                 self.sex = input("Gender [female/male]: ").strip().lower()
                 if not self.sex.isalpha() or self.sex not in ["female", "male"]:
-                    raise ValueError("Invalid input, must contain only 'female' or 'male'")
+                    raise ValueError(
+                        "Invalid input, must contain only 'female' or 'male'"
+                    )
                 return self.sex
             except ValueError as e:
                 print(f"Error: {e}. Please try again.")
@@ -197,8 +202,12 @@ class PersonalInfo:
         while True:
 
             try:
-                print("Specify your activity: 1 -> Low, 2 -> Moderate, 3 -> Active lifestyle, 4 -> Very active")
-                self.activity = int(input("Enter a number [from the scale above]: ").strip())
+                print(
+                    "Specify your activity: 1 -> Low, 2 -> Moderate, 3 -> Active lifestyle, 4 -> Very active"
+                )
+                self.activity = int(
+                    input("Enter a number [from the scale above]: ").strip()
+                )
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
                 continue
@@ -211,15 +220,18 @@ class PersonalInfo:
 
     def balance_cal_info(self):
         while True:
-
             try:
-                print("Specify your calories balance: 1 -> Deficit, 2 -> N/A, 3 -> Surplus")
-                self.question = int(input("Enter a number [from the scale above]: ").strip())
+                print(
+                    "Specify your calories balance: 1 -> Deficit, 2 -> N/A, 3 -> Surplus"
+                )
+                self.question = int(
+                    input("Enter a number [from the scale above]: ").strip()
+                )
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
                 continue
 
-            if self.question <= 0 or self.activity >= 4:
+            if self.question <= 0 or self.question >= 4:
                 print("Calories balance must be a number from the given scale")
                 continue
 

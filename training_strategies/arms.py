@@ -15,6 +15,7 @@ Create an instance of `Arms` with wingspan and height, then call `arms_strategie
 The exercises are categorized into biceps and triceps routines.
 """
 
+
 class Arms:
     def __init__(self, wingspan, height):
         self.wingspan = wingspan

@@ -17,6 +17,7 @@ Create an instance of `LowerLimbsMeasurements` and call methods to input measure
 Values are validated to ensure correctness.
 """
 
+
 class LowerLimbsMeasurements:
     def __init__(self):
         self.legs = 0
@@ -27,7 +28,9 @@ class LowerLimbsMeasurements:
         while True:
 
             try:
-                self.legs = float(input("Leg length [cm / measure from foot to hips]: ").strip())
+                self.legs = float(
+                    input("Leg length [cm / measure from foot to hips]: ").strip()
+                )
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
                 continue
@@ -42,7 +45,9 @@ class LowerLimbsMeasurements:
         while True:
 
             try:
-                self.tibia = float(input("Tibia length [cm / measure from knee to ankle]: ").strip())
+                self.tibia = float(
+                    input("Tibia length [cm / measure from knee to ankle]: ").strip()
+                )
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
                 continue
@@ -57,7 +62,9 @@ class LowerLimbsMeasurements:
         while True:
 
             try:
-                self.femur = float(input("Femur length [cm / measure from knee to hips]: ").strip())
+                self.femur = float(
+                    input("Femur length [cm / measure from knee to hips]: ").strip()
+                )
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
                 continue
