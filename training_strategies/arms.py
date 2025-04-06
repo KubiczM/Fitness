@@ -47,8 +47,8 @@ class Arms:
 
         elif self.wingspan <= self.height:
             biceps_exercises = [
-                "Supinated Pull_Ups",
-                "Neutral-Grip Pull Ups",
+                "Supinated Pull-Ups",
+                "Neutral-Grip Pull-Ups",
                 "Barbell Curl",
                 "Preacher Curl",
                 "Rope Hammer Curl",
