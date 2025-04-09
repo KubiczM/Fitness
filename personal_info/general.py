@@ -18,7 +18,7 @@ Usage:
 Create an instance of `PersonalInfo`, call `update_info()`, and receive a structured
 summary including metabolic rates, body measurements, and suggested training strategies.
 """
-
+from typing import Dict, Any
 from personal_info.lower_limbs import LowerLimbsMeasurements
 from personal_info.upper_limbs import UpperLimbsMeasurements
 from cal_calculator.basic_metabolic import BasicMetabolic
@@ -31,26 +31,26 @@ from training_strategies.legs import Legs
 
 
 class PersonalInfo:
-    def __init__(self):
-        self.first_name = ""
-        self.last_name = ""
-        self.sex = ""
-        self.body_weight = 0
-        self.height = 0
-        self.age = 0
-        self.activity = 1
-        self.question = 2
-        self.basic_metabolic = None
-        self.total_metabolic = None
-        self.cal_balance = None
-        self.lower_limbs = LowerLimbsMeasurements()
-        self.upper_limbs = UpperLimbsMeasurements()
-        self.arms = Arms(wingspan=0, height=0)
-        self.chest = Chest(wingspan=0, height=0)
-        self.back = Back(wingspan=0, height=0)
-        self.legs = Legs(legs=0, tibia=0, height=0, femur=0)
+    def __init__(self) -> None:
+        self.first_name: str = ""
+        self.last_name: str = ""
+        self.sex: str = ""
+        self.body_weight: float = 0.0
+        self.height: float = 0.0
+        self.age: float = 0.0
+        self.activity: int = 1
+        self.question: int = 2
+        self.basic_metabolic: BasicMetabolic | None = None
+        self.total_metabolic: TotalMetabolic | None = None
+        self.cal_balance: CalBalance | None = None
+        self.lower_limbs: LowerLimbsMeasurements = LowerLimbsMeasurements()
+        self.upper_limbs: UpperLimbsMeasurements = UpperLimbsMeasurements()
+        self.arms: Arms = Arms(wingspan=0, height=0)
+        self.chest: Chest = Chest(wingspan=0, height=0)
+        self.back: Back = Back(wingspan=0, height=0)
+        self.legs: Legs = Legs(legs=0, tibia=0, height=0, femur=0)
 
-    def update_info(self):
+    def update_info(self) -> Dict[str, Any]:
         self.first_name_info()
         self.last_name_info()
         self.sex_info()
@@ -119,7 +119,7 @@ class PersonalInfo:
 
         return info
 
-    def first_name_info(self):
+    def first_name_info(self) -> str:
         while True:
 
             try:
@@ -130,7 +130,7 @@ class PersonalInfo:
             except ValueError as e:
                 print(f"Error: {e}. Please try again.")
 
-    def last_name_info(self):
+    def last_name_info(self) -> str:
         while True:
 
             try:
@@ -141,7 +141,7 @@ class PersonalInfo:
             except ValueError as e:
                 print(f"Error: {e}. Please try again.")
 
-    def sex_info(self):
+    def sex_info(self) -> str:
         while True:
             try:
                 self.sex = input("Gender [female/male]: ").strip().lower()
@@ -153,7 +153,7 @@ class PersonalInfo:
             except ValueError as e:
                 print(f"Error: {e}. Please try again.")
 
-    def body_weight_info(self):
+    def body_weight_info(self) -> float:
         while True:
 
             try:
@@ -168,7 +168,7 @@ class PersonalInfo:
 
             return self.body_weight
 
-    def height_info(self):
+    def height_info(self) -> float:
         while True:
 
             try:
@@ -183,7 +183,7 @@ class PersonalInfo:
 
             return self.height
 
-    def age_info(self):
+    def age_info(self) -> float:
         while True:
 
             try:
@@ -198,7 +198,7 @@ class PersonalInfo:
 
             return self.age
 
-    def activity_info(self):
+    def activity_info(self) -> int:
         while True:
 
             try:
@@ -218,7 +218,7 @@ class PersonalInfo:
 
             return self.activity
 
-    def balance_cal_info(self):
+    def balance_cal_info(self) -> int:
         while True:
             try:
                 print(
