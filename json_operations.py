@@ -1,3 +1,8 @@
+import json
+import os
+from datetime import datetime
+from personal_info.general import PersonalInfo
+
 """
 JSON Operations for Client Data Management
 
@@ -15,11 +20,6 @@ Usage:
 - Use create_client_data() to gather and save a new client’s data into a JSON file.
 - Use open_client_data() to select an existing client, browse their files, and view the saved data.
 """
-
-import json
-import os
-from datetime import datetime
-from personal_info.general import PersonalInfo
 
 
 def create_client_data():

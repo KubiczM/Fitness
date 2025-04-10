@@ -1,3 +1,7 @@
+import json
+import os
+from json_operations import create_client_data, open_client_data
+
 """
 Client Data Management System
 
@@ -15,10 +19,6 @@ Functions:
 Usage:
 - Select an option to create, view, or manage client data.
 """
-
-import json
-import os
-from json_operations import create_client_data, open_client_data
 
 
 def list_saved_clients():

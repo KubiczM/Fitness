@@ -1,3 +1,14 @@
+from typing import Dict, Any
+from personal_info.lower_limbs import LowerLimbsMeasurements
+from personal_info.upper_limbs import UpperLimbsMeasurements
+from cal_calculator.basic_metabolic import BasicMetabolic
+from cal_calculator.total_metabolic import TotalMetabolic
+from cal_calculator.cal_balance import CalBalance
+from training_strategies.arms import Arms
+from training_strategies.chest import Chest
+from training_strategies.back import Back
+from training_strategies.legs import Legs
+
 """
 Personal Information and Fitness Assessment
 
@@ -18,16 +29,6 @@ Usage:
 Create an instance of `PersonalInfo`, call `update_info()`, and receive a structured
 summary including metabolic rates, body measurements, and suggested training strategies.
 """
-from typing import Dict, Any
-from personal_info.lower_limbs import LowerLimbsMeasurements
-from personal_info.upper_limbs import UpperLimbsMeasurements
-from cal_calculator.basic_metabolic import BasicMetabolic
-from cal_calculator.total_metabolic import TotalMetabolic
-from cal_calculator.cal_balance import CalBalance
-from training_strategies.arms import Arms
-from training_strategies.chest import Chest
-from training_strategies.back import Back
-from training_strategies.legs import Legs
 
 
 class PersonalInfo:
