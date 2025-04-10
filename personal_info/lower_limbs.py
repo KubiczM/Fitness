@@ -19,12 +19,12 @@ Values are validated to ensure correctness.
 
 
 class LowerLimbsMeasurements:
-    def __init__(self):
-        self.legs = 0
-        self.tibia = 0
-        self.femur = 0
+    def __init__(self) -> None:
+        self.legs: float = 0.0
+        self.tibia: float = 0.0
+        self.femur: float = 0.0
 
-    def legs_info(self):
+    def legs_info(self) -> float:
         while True:
 
             try:
@@ -41,7 +41,7 @@ class LowerLimbsMeasurements:
 
             return self.legs
 
-    def tibia_info(self):
+    def tibia_info(self) -> float:
         while True:
 
             try:
@@ -58,7 +58,7 @@ class LowerLimbsMeasurements:
 
             return self.tibia
 
-    def femur_info(self):
+    def femur_info(self) -> float:
         while True:
 
             try:

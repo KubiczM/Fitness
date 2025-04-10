@@ -19,12 +19,12 @@ Values are validated to ensure correctness.
 
 
 class UpperLimbsMeasurements:
-    def __init__(self):
-        self.wingspan = 0
-        self.ulna = 0
-        self.humerus = 0
+    def __init__(self) -> None:
+        self.wingspan: float = 0.0
+        self.ulna: float = 0.0
+        self.humerus: float = 0.0
 
-    def wingspan_info(self):
+    def wingspan_info(self) -> float:
         while True:
 
             try:
@@ -43,7 +43,7 @@ class UpperLimbsMeasurements:
 
             return self.wingspan
 
-    def ulna_info(self):
+    def ulna_info(self) -> float:
         while True:
 
             try:
@@ -60,7 +60,7 @@ class UpperLimbsMeasurements:
 
             return self.ulna
 
-    def humerus_info(self):
+    def humerus_info(self) -> float:
         while True:
 
             try:
