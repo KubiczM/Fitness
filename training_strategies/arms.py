@@ -1,3 +1,5 @@
+from typing import List, Dict, Union
+
 """
 Arms Training Strategies
 
@@ -17,13 +19,13 @@ The exercises are categorized into biceps and triceps routines.
 
 
 class Arms:
-    def __init__(self, wingspan, height):
-        self.wingspan = wingspan
-        self.height = height
+    def __init__(self, wingspan: Union[float, int], height: Union[float, int]) -> None:
+        self.wingspan: float = float(wingspan)
+        self.height: float = float(height)
 
-    def arms_strategies(self):
-        biceps_exercises = []
-        triceps_exercises = []
+    def arms_strategies(self) -> Dict[str, List[str]]:
+        biceps_exercises: List[str] = []
+        triceps_exercises: List[str] = []
 
         if self.wingspan > self.height:
             biceps_exercises = [
@@ -35,7 +37,6 @@ class Arms:
                 "Cable Reverse Curl",
                 "Machine Curl",
             ]
-
             triceps_exercises = [
                 "JM Press",
                 "Nosebreaker",
@@ -44,8 +45,7 @@ class Arms:
                 "Rope Pressdown",
                 "Decline Dumbbells Triceps Extension",
             ]
-
-        elif self.wingspan <= self.height:
+        else:
             biceps_exercises = [
                 "Supinated Pull-Ups",
                 "Neutral-Grip Pull-Ups",
@@ -54,7 +54,6 @@ class Arms:
                 "Rope Hammer Curl",
                 "Cable Curl",
             ]
-
             triceps_exercises = [
                 "Close-Grip Bench Press",
                 "Dips",
@@ -64,4 +63,7 @@ class Arms:
                 "Triceps Pressdown",
             ]
 
-        return {"biceps": biceps_exercises, "triceps": triceps_exercises}
+        return {
+            "biceps": biceps_exercises,
+            "triceps": triceps_exercises,
+        }

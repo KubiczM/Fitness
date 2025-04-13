@@ -1,3 +1,6 @@
+from typing import List, Dict, Union
+
+
 """
 Back Training Strategies
 
@@ -18,13 +21,13 @@ A conclusion is provided for which muscles are easiest to develop based on arm l
 
 
 class Back:
-    def __init__(self, wingspan, height):
-        self.wingspan = wingspan
-        self.height = height
+    def __init__(self, wingspan: Union[float, int], height: Union[float, int]) -> None:
+        self.wingspan: float = float(wingspan)
+        self.height: float = float(height)
 
-    def back_strategies(self):
+    def back_strategies(self) -> Dict[str, List[str]]:
         if self.wingspan > self.height:
-            back_long_arms = [
+            back_long_arms: List[str] = [
                 "[Vertical] Close-Grip Supinated Chin-Up / Lat Pulldown",
                 "[Horizontal] Pronated Grip Bent Over Row",
                 "[Horizontal] Neutral Grip Seated Row",
@@ -38,7 +41,7 @@ class Back:
                 "[Traps] Upright Row",
             ]
 
-            conclusion = [
+            conclusion: List[str] = [
                 "Conclusion [back / short arms] -> order for easiest muscles to develop:"
                 "1. Easiest: Latissimus Dorsi",
                 "2. Middle: Rear Delts and Rhomboids",
@@ -47,8 +50,8 @@ class Back:
 
             return {"long arms": back_long_arms, "conclusion": conclusion}
 
-        elif self.wingspan <= self.height:
-            back_short_arms = [
+        else:
+            back_short_arms: List[str] = [
                 "[Vertical] Shoulder Width Pull-Ups / Pulldown",
                 "[Vertical] Motorcycle Row",
                 "[Vertical] Wide Grip Pronated Lat Pulldown",
@@ -60,7 +63,7 @@ class Back:
                 "[Lats] Kayak Row",
             ]
 
-            conclusion = [
+            conclusion: List[str] = [
                 "Conclusion [back / short arms]: -> order for easiest muscles to develop:"
                 "1. Easiest: Pectorals",
                 "2. Middle: Deltoids",

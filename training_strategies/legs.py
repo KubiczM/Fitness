@@ -1,3 +1,6 @@
+from typing import List, Dict, Union
+
+
 """
 Legs Training Strategies
 
@@ -19,15 +22,21 @@ A conclusion is provided for which muscles are easiest to develop based on leg l
 
 
 class Legs:
-    def __init__(self, legs, tibia, height, femur):
-        self.legs = legs
-        self.tibia = tibia
-        self.height = height
-        self.femur = femur
+    def __init__(
+        self,
+        legs: Union[float, int],
+        tibia: Union[float, int],
+        height: Union[float, int],
+        femur: Union[float, int],
+    ) -> None:
+        self.legs: float = float(legs)
+        self.tibia: float = float(tibia)
+        self.height: float = float(height)
+        self.femur: float = float(femur)
 
-    def legs_strategies(self):
+    def legs_strategies(self) -> Dict[str, List[str]]:
         if self.legs >= 0.43 * self.height:
-            long_legs = [
+            long_legs: List[str] = [
                 "[Squat pattern] Front Squat",
                 "[Squat pattern] Heels Elevated Front Squat",
                 "[Squat pattern] High Bar Heels Elevated Back Squat",
@@ -43,18 +52,18 @@ class Legs:
                 "[Assistance excercise] Leg Extension",
             ]
 
-            conclusion = [
+            conclusion: List[str] = [
                 "Conclusion [short legs] -> order for easiest muscles to develop:",
                 "1. Easiest: Glutes",
-                "2. Middle: Hammstrings",
+                "2. Middle: Hamstrings",
                 "3. Hardest: Quads and Calves",
             ]
 
             return {"short legs": long_legs, "conclusion": conclusion}
 
-        elif self.legs <= 0.44 * self.height and self.legs >= 0.47 * self.height:
+        elif 0.44 * self.height <= self.legs <= 0.47 * self.height:
             if self.tibia >= 0.84 * self.femur:
-                average_legs_short_tibia = [
+                average_legs_short_tibia: List[str] = [
                     "[Squat pattern] Front Squat",
                     "[Squat pattern] Heels Elevated Front Squat",
                     "[Squat pattern] High Bar Heels Elevated Back Squat",
@@ -70,10 +79,10 @@ class Legs:
                     "[Assistance excercise] Leg Extension",
                 ]
 
-                conclusion = [
+                conclusion: List[str] = [
                     "Conclusion [short legs] -> order for easiest muscles to develop:",
                     "1. Easiest: Glutes",
-                    "2. Middle: Hammstrings",
+                    "2. Middle: Hamstrings",
                     "3. Hardest: Quads and Calves",
                 ]
 
@@ -83,7 +92,7 @@ class Legs:
                 }
 
             elif self.tibia <= 0.85 * self.femur:
-                average_legs_long_tibia = [
+                average_legs_long_tibia: List[str] = [
                     "[Squat pattern] Squat [and variations]",
                     "[Hinge pattern] Front Feet Elevated Romanian Deadlift",
                     "[Hip thrust] Back Extension",
@@ -98,11 +107,11 @@ class Legs:
                     "[Assistance excercise] Rope Pull-Through",
                 ]
 
-                conclusion = [
-                    "Conclusion [long legs] -> order for easiest muscles to develop:"
-                    "1. Easiest: Quadss",
+                conclusion: List[str] = [
+                    "Conclusion [long legs] -> order for easiest muscles to develop:",
+                    "1. Easiest: Quads",
                     "2. Middle: Calves",
-                    "3. Hardest: Hammstrings and Glutes",
+                    "3. Hardest: Hamstrings and Glutes",
                 ]
 
                 return {
@@ -111,7 +120,7 @@ class Legs:
                 }
 
         elif self.legs >= 0.48 * self.height:
-            short_legs = [
+            short_legs: List[str] = [
                 "[Squat pattern] Squat [and variations]",
                 "[Hinge pattern] Front Feet Elevated Romanian Deadlift",
                 "[Hip thrust] Back Extension",
@@ -126,11 +135,11 @@ class Legs:
                 "[Assistance excercise] Rope Pull-Through",
             ]
 
-            conclusion = [
-                "Conclusion [long legs] -> order for easiest muscles to develop:"
-                "1. Easiest: Quadss",
+            conclusion: List[str] = [
+                "Conclusion [long legs] -> order for easiest muscles to develop:",
+                "1. Easiest: Quads",
                 "2. Middle: Calves",
-                "3. Hardest: Hammstrings and Glutes",
+                "3. Hardest: Hamstrings and Glutes",
             ]
 
             return {"long legs": short_legs, "conclusion": conclusion}
