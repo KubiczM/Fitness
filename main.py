@@ -1,5 +1,6 @@
 import json
 import os
+from typing import Dict, Any, List
 from json_operations import create_client_data, open_client_data
 
 """
@@ -21,8 +22,8 @@ Usage:
 """
 
 
-def list_saved_clients():
-    clients_directory = "clients"
+def list_saved_clients() -> None:
+    clients_directory: str = "clients"
 
     if os.path.exists(clients_directory):
         print("\nSaved Client Files:")
@@ -38,9 +39,9 @@ def list_saved_clients():
         print("No saved client files found.")
 
 
-def list_client_files(client_dir):
-    client_dir_path = os.path.join("clients", client_dir)
-    files = [f for f in os.listdir(client_dir_path) if f.endswith(".json")]
+def list_client_files(client_dir: str) -> None:
+    client_dir_path: str = os.path.join("clients", client_dir)
+    files: List[str] = [f for f in os.listdir(client_dir_path) if f.endswith(".json")]
 
     if not files:
         print(f"No JSON files found for {client_dir}.")
@@ -53,12 +54,12 @@ def list_client_files(client_dir):
     file_choice = input("Choose a file by number: ")
 
     try:
-        file_choice = int(file_choice)
-        if 1 <= file_choice <= len(files):
-            selected_file = files[file_choice - 1]
-            file_path = os.path.join(client_dir_path, selected_file)
+        file_choice_int = int(file_choice)
+        if 1 <= file_choice_int <= len(files):
+            selected_file: str = files[file_choice_int - 1]
+            file_path: str = os.path.join(client_dir_path, selected_file)
             with open(file_path, "r") as file:
-                data = json.load(file)
+                data: Dict[str, Any] = json.load(file)
                 display_client_data(data)
         else:
             print("Invalid choice, please choose a valid number.")
@@ -66,7 +67,7 @@ def list_client_files(client_dir):
         print("Invalid input. Please enter a number.")
 
 
-def display_client_data(data):
+def display_client_data(data: Dict[str, Any]) -> None:
     print("\nClient Data:")
     print(f"First Name: {data['first name']}")
     print(f"Last Name: {data['last name']}")
@@ -100,7 +101,7 @@ def display_client_data(data):
     print("\nChest Strategy:")
     print("Exercises based on arms length:")
 
-    arm_type = (
+    arm_type: str = (
         "long arms" if data["upper limbs"]["wingspan [cm]"] > 150 else "short arms"
     )
 
@@ -128,7 +129,7 @@ def display_client_data(data):
         print(f"  - {line}")
 
     print("\nLegs Strategy:")
-    leg_type = "short legs" if data["legs"]["legs [cm]"] < 50 else "long legs"
+    leg_type: str = "short legs" if data["legs"]["legs [cm]"] < 50 else "long legs"
 
     if leg_type in data["legs strategy"]:
         for exercise in data["legs strategy"][leg_type]:
@@ -141,7 +142,7 @@ def display_client_data(data):
         print(f"  - {line}")
 
 
-def run():
+def run() -> None:
     while True:
         print()
         choice = input(
