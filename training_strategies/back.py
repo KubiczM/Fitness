@@ -42,7 +42,7 @@ class Back:
             ]
 
             conclusion: List[str] = [
-                "Conclusion [back / short arms] -> order for easiest muscles to develop:"
+                "Conclusion [back / long arms] -> order for easiest muscles to develop:",
                 "1. Easiest: Latissimus Dorsi",
                 "2. Middle: Rear Delts and Rhomboids",
                 "3. Hardest: Traps",
@@ -64,10 +64,10 @@ class Back:
             ]
 
             conclusion: List[str] = [
-                "Conclusion [back / short arms]: -> order for easiest muscles to develop:"
-                "1. Easiest: Pectorals",
-                "2. Middle: Deltoids",
-                "3. Hardest: Triceps",
+                "Conclusion [back / short arms] -> order for easiest muscles to develop:",
+                "1. Easiest: Latissimus Dorsi",
+                "2. Middle: Rhomboids and Rear Delts",
+                "3. Hardest: Traps",
             ]
 
             return {"short arms": back_short_arms, "conclusion": conclusion}

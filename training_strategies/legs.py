@@ -53,13 +53,13 @@ class Legs:
             ]
 
             conclusion: List[str] = [
-                "Conclusion [short legs] -> order for easiest muscles to develop:",
-                "1. Easiest: Glutes",
-                "2. Middle: Hamstrings",
-                "3. Hardest: Quads and Calves",
+                "Conclusion [long legs] -> order for easiest muscles to develop:",
+                "1. Easiest: Quads",
+                "2. Middle: Calves",
+                "3. Hardest: Hamstrings and Glutes",
             ]
 
-            return {"short legs": long_legs, "conclusion": conclusion}
+            return {"long legs": long_legs, "conclusion": conclusion}
 
         elif 0.44 * self.height <= self.legs <= 0.47 * self.height:
             if self.tibia >= 0.84 * self.femur:
@@ -119,7 +119,7 @@ class Legs:
                     "conclusion": conclusion,
                 }
 
-        elif self.legs >= 0.48 * self.height:
+        elif self.legs < 0.43 * self.height:
             short_legs: List[str] = [
                 "[Squat pattern] Squat [and variations]",
                 "[Hinge pattern] Front Feet Elevated Romanian Deadlift",
@@ -136,10 +136,16 @@ class Legs:
             ]
 
             conclusion: List[str] = [
-                "Conclusion [long legs] -> order for easiest muscles to develop:",
-                "1. Easiest: Quads",
-                "2. Middle: Calves",
-                "3. Hardest: Hamstrings and Glutes",
+                "Conclusion [short legs] -> order for easiest muscles to develop:",
+                "1. Easiest: Glutes",
+                "2. Middle: Hamstrings",
+                "3. Hardest: Quads and Calves",
             ]
 
-            return {"long legs": short_legs, "conclusion": conclusion}
+            return {"short legs": short_legs, "conclusion": conclusion}
+
+        else:
+            return {
+                "message": ["No leg strategy matched the provided proportions."],
+                "conclusion": ["Please check the measurements."],
+            }

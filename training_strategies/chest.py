@@ -14,8 +14,8 @@ Methods:
 - chest_strategies: Determines recommended exercises based on wingspan and height.
 
 Usage:
-Create an instance of `Chest` with wingspan and height, then call `chest_strategies` to get a list of suggested exercises.
-The exercises are categorized based on whether the individual has long or short arms.
+Create an instance of `Chest` with wingspan and height, then call `chest_strategies` to get a list of 
+suggested exercises. The exercises are categorized based on whether the individual has long or short arms.
 A conclusion is provided for which muscles are easiest to develop based on arm length.
 """
 
@@ -25,41 +25,48 @@ class Chest:
         self.wingspan: float = float(wingspan)
         self.height: float = float(height)
 
-    def chest_strategies(self) -> Dict[str, List[str]]:
-        if self.wingspan > self.height:
-            chest_long_arms: List[str] = [
+    def _get_exercises_and_conclusion(self, arm_type: str) -> Dict[str, Union[List[str], List[str]]]:
+        exercises_map = {
+            "long arms": [
                 "Bench Press",
                 "Dips",
                 "Incline Dumbbells Press",
                 "Cable Flies",
                 "Peck Deck",
                 "Incline Dumbbells Flies",
-            ]
-
-            conclusion: List[str] = [
-                "Conclusion [chest / long arms] -> order for easiest muscles to develop:",
-                "1. Easiest: Pectorals",
-                "2. Middle: Deltoids",
-                "3. Hardest: Triceps",
-            ]
-
-            return {"long arms": chest_long_arms, "conclusion": conclusion}
-
-        else:
-            chest_short_arms: List[str] = [
+            ],
+            "short arms": [
                 "Wide Grip Bench Press",
                 "Power Flies",
                 "Dumbbells Fly-Press",
                 "Peck Deck",
                 "Cable Flies",
                 "Squeeze Press",
+            ],
+            "average arms": [
+                "Incline Bench Press",
+                "Flat Bench Press",
+                "Chest Dips",
+                "Dumbbell Press",
+                "Cable Chest Press",
+                "Machine Chest Press",
             ]
+        }
 
-            conclusion: List[str] = [
-                "Conclusion [chest / short arms] -> order for easiest muscles to develop:",
-                "1. Easiest: Pectorals",
-                "2. Middle: Deltoids",
-                "3. Hardest: Triceps",
-            ]
+        conclusion = [
+            "Conclusion -> order for easiest muscles to develop:",
+            "1. Easiest: Pectorals",
+            "2. Middle: Deltoids",
+            "3. Hardest: Triceps",
+        ]
 
-            return {"short arms": chest_short_arms, "conclusion": conclusion}
+        exercises = exercises_map.get(arm_type, [])
+        return {"exercises": exercises, "conclusion": conclusion}
+
+    def chest_strategies(self) -> Dict[str, Union[List[str], List[str]]]:
+        if self.wingspan > self.height:
+            return self._get_exercises_and_conclusion("long arms")
+        elif 0.95 * self.height <= self.wingspan <= 1.05 * self.height:
+            return self._get_exercises_and_conclusion("average arms")
+        else:
+            return self._get_exercises_and_conclusion("short arms")
