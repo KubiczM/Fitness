@@ -1,31 +1,14 @@
 from typing import List, Dict, Union
 
 
-"""
-Chest Training Strategies
-
-This class provides exercise recommendations based on the relationship between wingspan and height,
-focused on chest development, including pectorals, deltoids, and triceps.
-
-Class:
-- Chest: Offers exercise strategies for chest training.
-
-Methods:
-- chest_strategies: Determines recommended exercises based on wingspan and height.
-
-Usage:
-Create an instance of `Chest` with wingspan and height, then call `chest_strategies` to get a list of 
-suggested exercises. The exercises are categorized based on whether the individual has long or short arms.
-A conclusion is provided for which muscles are easiest to develop based on arm length.
-"""
-
-
 class Chest:
     def __init__(self, wingspan: Union[float, int], height: Union[float, int]) -> None:
         self.wingspan: float = float(wingspan)
         self.height: float = float(height)
 
-    def _get_exercises_and_conclusion(self, arm_type: str) -> Dict[str, Union[List[str], List[str]]]:
+    def _get_exercises_and_conclusion(
+        self, arm_type: str
+    ) -> Dict[str, Union[List[str], List[str]]]:
         exercises_map = {
             "long arms": [
                 "Bench Press",
@@ -50,7 +33,7 @@ class Chest:
                 "Dumbbell Press",
                 "Cable Chest Press",
                 "Machine Chest Press",
-            ]
+            ],
         }
 
         conclusion = [

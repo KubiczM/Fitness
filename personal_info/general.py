@@ -9,27 +9,6 @@ from training_strategies.chest import Chest
 from training_strategies.back import Back
 from training_strategies.legs import Legs
 
-"""
-Personal Information and Fitness Assessment
-
-This class collects personal information, body measurements, and metabolic calculations
-to determine fitness strategies based on user input.
-
-Class:
-- PersonalInfo: Manages user data collection, metabolic calculations, and training recommendations.
-
-Methods:
-- update_info: Collects personal details, calculates metabolic rates, and provides training strategies.
-- first_name_info / last_name_info / sex_info: Collect user identity details with validation.
-- body_weight_info / height_info / age_info: Gather physical attributes with validation.
-- activity_info: Assigns an activity level from 1 (low) to 4 (very active).
-- balance_cal_info: Determines calorie balance preference (deficit, maintenance, or surplus).
-
-Usage:
-Create an instance of `PersonalInfo`, call `update_info()`, and receive a structured
-summary including metabolic rates, body measurements, and suggested training strategies.
-"""
-
 
 class PersonalInfo:
     def __init__(self) -> None:
