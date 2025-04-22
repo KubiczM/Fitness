@@ -95,4 +95,3 @@ class Legs:
             leg_type = "short legs"
 
         return self._get_exercises_and_conclusion(leg_type)
-

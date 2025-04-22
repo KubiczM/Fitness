@@ -28,7 +28,9 @@ class PersonalInfo:
         self.arms: Arms = Arms(wingspan=0, height=0)
         self.chest: Chest = Chest(wingspan=0, height=0)
         self.back: Back = Back(wingspan=0, height=0)
-        self.legs: Legs = Legs(leg_length=0, tibia_length=0, torso_length=0, femur_length=0)
+        self.legs: Legs = Legs(
+            leg_length=0, tibia_length=0, torso_length=0, femur_length=0
+        )
 
     def update_info(self) -> Dict[str, Any]:
         self.first_name_info()
@@ -39,7 +41,9 @@ class PersonalInfo:
         self.age_info()
         print()
         self.activity_info()
-        self.basic_metabolic = BasicMetabolic(self.sex, self.body_weight, self.height, self.age)
+        self.basic_metabolic = BasicMetabolic(
+            self.sex, self.body_weight, self.height, self.age
+        )
         self.total_metabolic = TotalMetabolic(self.activity, self.basic_metabolic)
         self.basic_metabolic.basic_metabolic()
         self.total_metabolic.total_metabolic()
@@ -110,7 +114,9 @@ class PersonalInfo:
         while True:
             self.sex = input("Gender [female/male]: ").strip().lower()
             if self.sex not in ["female", "male"]:
-                print("Error: Gender must be either 'female' or 'male'. Please try again.")
+                print(
+                    "Error: Gender must be either 'female' or 'male'. Please try again."
+                )
             else:
                 return self.sex
 
@@ -119,7 +125,9 @@ class PersonalInfo:
             try:
                 self.body_weight = float(input("Body weight [kg]: ").strip())
                 if self.body_weight <= 0:
-                    print("Error: Body weight must be greater than 0 kg. Please try again.")
+                    print(
+                        "Error: Body weight must be greater than 0 kg. Please try again."
+                    )
                 else:
                     return self.body_weight
             except ValueError:
@@ -155,9 +163,13 @@ class PersonalInfo:
             print("3 -> Active lifestyle")
             print("4 -> Very active")
             try:
-                self.activity = int(input("Enter a number [from the scale above]: ").strip())
+                self.activity = int(
+                    input("Enter a number [from the scale above]: ").strip()
+                )
                 if self.activity not in [1, 2, 3, 4]:
-                    print("Error: Activity must be a number between 1 and 4. Please try again.\n")
+                    print(
+                        "Error: Activity must be a number between 1 and 4. Please try again.\n"
+                    )
                 else:
                     return self.activity
             except ValueError:
@@ -170,11 +182,14 @@ class PersonalInfo:
             print("2 -> N/A")
             print("3 -> Surplus")
             try:
-                self.question = int(input("Enter a number [from the scale above]: ").strip())
+                self.question = int(
+                    input("Enter a number [from the scale above]: ").strip()
+                )
                 if self.question not in [1, 2, 3]:
-                    print("Error: Balance must be a number between 1 and 3. Please try again.\n")
+                    print(
+                        "Error: Balance must be a number between 1 and 3. Please try again.\n"
+                    )
                 else:
                     return self.question
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.\n")
-

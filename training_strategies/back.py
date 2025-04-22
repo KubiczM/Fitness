@@ -58,5 +58,5 @@ class Back:
 
         return {
             arm_type: strategies.get("exercises", []),
-            "conclusion": strategies.get("conclusion", [])
+            "conclusion": strategies.get("conclusion", []),
         }
