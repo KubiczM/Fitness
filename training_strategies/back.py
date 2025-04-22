@@ -54,4 +54,9 @@ class Back:
 
     def back_strategies(self) -> Dict[str, List[str]]:
         arm_type = "long arms" if self.wingspan > self.height else "short arms"
-        return self._get_exercises_and_conclusion(arm_type)
+        strategies = self._get_exercises_and_conclusion(arm_type)
+
+        return {
+            arm_type: strategies.get("exercises", []),
+            "conclusion": strategies.get("conclusion", [])
+        }

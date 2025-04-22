@@ -62,6 +62,8 @@ class Arms:
     def arms_strategies(self) -> Dict[str, List[str]]:
         if self.wingspan > self.height:
             arm_type = "long arms"
+        elif self.wingspan < self.height:
+            arm_type = "short arms"
         else:
             arm_type = "short arms"
 

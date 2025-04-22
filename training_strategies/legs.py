@@ -7,10 +7,12 @@ class Legs:
         leg_length: Union[float, int],
         tibia_length: Union[float, int],
         torso_length: Union[float, int],
+        femur_length: Union[float, int],
     ) -> None:
         self.leg_length: float = float(leg_length)
         self.tibia_length: float = float(tibia_length)
         self.torso_length: float = float(torso_length)
+        self.femur_length = float(femur_length)
 
     def _get_exercises_and_conclusion(self, leg_type: str) -> Dict[str, List[str]]:
         exercises_map = {
@@ -52,27 +54,27 @@ class Legs:
         conclusion_map = {
             "long legs": [
                 "Conclusion [legs / long legs]:",
-                "Easiest to develop: Hamstrings & Glutes",
-                "Middle: Quads",
-                "Hardest: Overall Squatting Mechanics",
+                "1. Easiest to develop: Hamstrings & Glutes",
+                "2. Middle: Quads",
+                "3. Hardest: Overall Squatting Mechanics",
             ],
             "average legs - short tibia": [
                 "Conclusion [legs / avg legs - short tibia]:",
-                "Easiest to develop: Quads",
-                "Middle: Glutes",
-                "Hardest: Hamstrings",
+                "1. Easiest to develop: Quads",
+                "2. Middle: Glutes",
+                "3. Hardest: Hamstrings",
             ],
             "average legs - long tibia": [
                 "Conclusion [legs / avg legs - long tibia]:",
-                "Easiest to develop: Glutes & Hamstrings",
-                "Middle: Quads",
-                "Hardest: Squat Depth/Balance",
+                "1. Easiest to develop: Glutes & Hamstrings",
+                "2. Middle: Quads",
+                "3. Hardest: Squat Depth/Balance",
             ],
             "short legs": [
                 "Conclusion [legs / short legs]:",
-                "Easiest to develop: Quads",
-                "Middle: Glutes",
-                "Hardest: Hamstrings",
+                "1. Easiest to develop: Quads",
+                "2. Middle: Glutes",
+                "3. Hardest: Hamstrings",
             ],
         }
 
@@ -93,3 +95,4 @@ class Legs:
             leg_type = "short legs"
 
         return self._get_exercises_and_conclusion(leg_type)
+

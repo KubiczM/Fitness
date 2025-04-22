@@ -11,7 +11,7 @@ def test_back_long_arms():
     )
     assert "[Traps] Upright Row" in strategies["long arms"]
     assert len(strategies["long arms"]) == 11
-    assert "Conclusion [back / short arms]" in strategies["conclusion"][0]
+    assert "Conclusion [back / long arms]" in strategies["conclusion"][0]
 
 
 def test_back_short_arms():

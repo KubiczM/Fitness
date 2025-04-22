@@ -49,7 +49,16 @@ class Chest:
 
         result = exercises_map.get(arm_type, {"exercises": []})
         result["conclusion"] = conclusion
-        return result
+
+        # Zwróć cały słownik, w którym będą wszystkie możliwe klucze
+        strategies = {
+            "long arms": exercises_map.get("long arms", {}),
+            "short arms": exercises_map.get("short arms", {}),
+            "average arms": exercises_map.get("average arms", {}),
+            "conclusion": conclusion
+        }
+
+        return strategies
 
     def chest_strategies(self) -> Dict[str, List[str]]:
         if self.wingspan > self.height:

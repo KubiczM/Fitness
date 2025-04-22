@@ -1,18 +1,17 @@
 def display_client_data(client_data):
-
     print(f"\nClient: {client_data['first_name']} {client_data['last_name']}")
-    print(f"Body weight: {client_data['body_weight']} kg")
-    print(f"Height: {client_data['height']} cm")
-    print(f"Age: {client_data['age']} years")
-    print(f"Calories balance: {client_data['calories_balance']} cal\n")
+    print(f"Body weight: {client_data['body_weight [kg]']} kg")
+    print(f"Height: {client_data['height [cm]']} cm")
+    print(f"Age: {client_data['age [years]']} years")
+    print(f"Calories balance: {client_data['calories_balance [cal]']} cal\n")
 
     print("Body Measurements:")
-    print(f"  Leg length: {client_data['leg_length']} cm")
-    print(f"  Tibia length: {client_data['tibia_length']} cm")
-    print(f"  Femur length: {client_data['femur_length']} cm")
-    print(f"  Wingspan: {client_data['wingspan']} cm")
-    print(f"  Ulna: {client_data['ulna']} cm")
-    print(f"  Humerus: {client_data['humerus']} cm\n")
+    print(f"  Leg length: {client_data['legs']['legs [cm]']} cm")
+    print(f"  Tibia length: {client_data['legs']['tibia [cm]']} cm")
+    print(f"  Femur length: {client_data['legs']['femur [cm]']} cm")
+    print(f"  Wingspan: {client_data['upper_limbs']['wingspan [cm]']} cm")
+    print(f"  Ulna: {client_data['upper_limbs']['ulna [cm]']} cm")
+    print(f"  Humerus: {client_data['upper_limbs']['humerus [cm]']} cm\n")
 
     def print_strategy(title, strategy_dict):
         print(f"{title}")
@@ -22,7 +21,7 @@ def display_client_data(client_data):
                 print(f"    - {line}")
         print()
 
-    print_strategy("Arms Strategy", client_data["arms strategy"])
-    print_strategy("Chest Strategy", client_data["chest strategy"])
-    print_strategy("Back Strategy", client_data["back strategy"])
-    print_strategy("Legs Strategy", client_data["legs strategy"])
+    print_strategy("Arms Strategy", client_data["arms_strategy"])
+    print_strategy("Chest Strategy", client_data["chest_strategy"])
+    print_strategy("Back Strategy", client_data["back_strategy"])
+    print_strategy("Legs Strategy", client_data["legs_strategy"])

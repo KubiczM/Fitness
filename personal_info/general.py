@@ -28,7 +28,7 @@ class PersonalInfo:
         self.arms: Arms = Arms(wingspan=0, height=0)
         self.chest: Chest = Chest(wingspan=0, height=0)
         self.back: Back = Back(wingspan=0, height=0)
-        self.legs: Legs = Legs(legs=0, tibia=0, height=0, femur=0)
+        self.legs: Legs = Legs(leg_length=0, tibia_length=0, torso_length=0, femur_length=0)
 
     def update_info(self) -> Dict[str, Any]:
         self.first_name_info()
@@ -39,9 +39,7 @@ class PersonalInfo:
         self.age_info()
         print()
         self.activity_info()
-        self.basic_metabolic = BasicMetabolic(
-            self.sex, self.body_weight, self.height, self.age
-        )
+        self.basic_metabolic = BasicMetabolic(self.sex, self.body_weight, self.height, self.age)
         self.total_metabolic = TotalMetabolic(self.activity, self.basic_metabolic)
         self.basic_metabolic.basic_metabolic()
         self.total_metabolic.total_metabolic()
@@ -62,42 +60,35 @@ class PersonalInfo:
         self.chest = Chest(wingspan=self.upper_limbs.wingspan, height=self.height)
         self.back.back_strategies()
         self.back = Back(wingspan=self.upper_limbs.wingspan, height=self.height)
-        self.legs.legs_strategies()
-        self.legs = Legs(
-            legs=self.lower_limbs.legs,
-            tibia=self.lower_limbs.tibia,
-            height=self.height,
-            femur=self.lower_limbs.femur,
-        )
+        self.legs.leg_strategies()
+        self.legs = Legs(leg_length=0, tibia_length=0, torso_length=0, femur_length=0)
         print()
 
-        info = {
-            "first name": self.first_name,
-            "last name": self.last_name,
+        return {
+            "first_name": self.first_name,
+            "last_name": self.last_name,
             "sex": self.sex,
-            "body weight [kg]": self.body_weight,
+            "body_weight [kg]": self.body_weight,
             "height [cm]": self.height,
             "age [years]": self.age,
-            "basic metabolic [cal]": self.basic_metabolic.basic_metabolic_rate,
-            "total metabolic [cal]": self.total_metabolic.total_metabolic_rate,
-            "calories balance [cal]": self.cal_balance.balance_cal(),
+            "basic_metabolic [cal]": self.basic_metabolic.basic_metabolic_rate,
+            "total_metabolic [cal]": self.total_metabolic.total_metabolic_rate,
+            "calories_balance [cal]": self.cal_balance.balance_cal(),
             "legs": {
                 "legs [cm]": self.lower_limbs.legs,
                 "tibia [cm]": self.lower_limbs.tibia,
                 "femur [cm]": self.lower_limbs.femur,
             },
-            "upper limbs": {
+            "upper_limbs": {
                 "wingspan [cm]": self.upper_limbs.wingspan,
                 "ulna [cm]": self.upper_limbs.ulna,
                 "humerus [cm]": self.upper_limbs.humerus,
             },
-            "arms strategy": self.arms.arms_strategies(),
-            "chest strategy": self.chest.chest_strategies(),
-            "back strategy": self.back.back_strategies(),
-            "legs strategy": self.legs.legs_strategies(),
+            "arms_strategy": self.arms.arms_strategies(),
+            "chest_strategy": self.chest.chest_strategies(),
+            "back_strategy": self.back.back_strategies(),
+            "legs_strategy": self.legs.leg_strategies(),
         }
-
-        return info
 
     def first_name_info(self) -> str:
         while True:
@@ -158,28 +149,32 @@ class PersonalInfo:
 
     def activity_info(self) -> int:
         while True:
-            print(
-                "Specify your activity: 1 -> Low, 2 -> Moderate, 3 -> Active lifestyle, 4 -> Very active"
-            )
+            print("\nSpecify your activity:")
+            print("1 -> Low")
+            print("2 -> Moderate")
+            print("3 -> Active lifestyle")
+            print("4 -> Very active")
             try:
                 self.activity = int(input("Enter a number [from the scale above]: ").strip())
                 if self.activity not in [1, 2, 3, 4]:
-                    print("Error: Activity must be a number between 1 and 4. Please try again.")
+                    print("Error: Activity must be a number between 1 and 4. Please try again.\n")
                 else:
                     return self.activity
             except ValueError:
-                print("Error: Invalid input. Please enter a valid number.")
+                print("Error: Invalid input. Please enter a valid number.\n")
 
     def balance_cal_info(self) -> int:
         while True:
-            print(
-                "Specify your calories balance: 1 -> Deficit, 2 -> N/A, 3 -> Surplus"
-            )
+            print("\nSpecify your calories balance:")
+            print("1 -> Deficit")
+            print("2 -> N/A")
+            print("3 -> Surplus")
             try:
                 self.question = int(input("Enter a number [from the scale above]: ").strip())
                 if self.question not in [1, 2, 3]:
-                    print("Error: Balance must be a number between 1 and 3. Please try again.")
+                    print("Error: Balance must be a number between 1 and 3. Please try again.\n")
                 else:
                     return self.question
             except ValueError:
-                print("Error: Invalid input. Please enter a valid number.")
+                print("Error: Invalid input. Please enter a valid number.\n")
+
