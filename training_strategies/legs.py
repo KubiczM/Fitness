@@ -4,128 +4,92 @@ from typing import List, Dict, Union
 class Legs:
     def __init__(
         self,
-        legs: Union[float, int],
-        tibia: Union[float, int],
-        height: Union[float, int],
-        femur: Union[float, int],
+        leg_length: Union[float, int],
+        tibia_length: Union[float, int],
+        torso_length: Union[float, int],
     ) -> None:
-        self.legs: float = float(legs)
-        self.tibia: float = float(tibia)
-        self.height: float = float(height)
-        self.femur: float = float(femur)
+        self.leg_length: float = float(leg_length)
+        self.tibia_length: float = float(tibia_length)
+        self.torso_length: float = float(torso_length)
 
-    def legs_strategies(self) -> Dict[str, List[str]]:
-        if self.legs >= 0.43 * self.height:
-            long_legs: List[str] = [
-                "[Squat pattern] Front Squat",
-                "[Squat pattern] Heels Elevated Front Squat",
-                "[Squat pattern] High Bar Heels Elevated Back Squat",
-                "[Squat pattern] High Bar Heels Elevated Parallel Back Squat (Narrow Stance)",
-                "[Hinge pattern] Deadlift [any variations]",
-                "[Hip thrust] Will be effective, but not required unless want to max out the glutes",
-                "[Single leg] Shorter Steps Walking Lunges",
-                "[Single leg] Short Steps Bulgarian Split Squat",
-                "[Single leg] Backwards Walking Lunges",
-                "[Single leg] Backward Sled Pull",
-                "[Assistance excercise] Hack Squat",
-                "[Assistance excercise] Narrow Stance Leg Press",
-                "[Assistance excercise] Leg Extension",
-            ]
+    def _get_exercises_and_conclusion(self, leg_type: str) -> Dict[str, List[str]]:
+        exercises_map = {
+            "long legs": [
+                "Low Bar Squat",
+                "Front Foot Elevated Split Squat",
+                "Romanian Deadlift",
+                "Leg Curl",
+                "Hip Thrust",
+                "45 Degree Back Extension",
+            ],
+            "average legs - short tibia": [
+                "High Bar Squat",
+                "Cyclist Squat",
+                "Heels Elevated Front Squat",
+                "Split Squat",
+                "Leg Press",
+                "Hip Thrust",
+                "Leg Curl",
+            ],
+            "average legs - long tibia": [
+                "Trap Bar Deadlift",
+                "Box Squat",
+                "Leg Press",
+                "Romanian Deadlift",
+                "Hip Thrust",
+                "Reverse Lunge",
+            ],
+            "short legs": [
+                "High Bar Squat",
+                "Front Squat",
+                "Split Squat",
+                "Leg Extension",
+                "Lying Leg Curl",
+                "Hip Thrust",
+            ],
+        }
 
-            conclusion: List[str] = [
-                "Conclusion [long legs] -> order for easiest muscles to develop:",
-                "1. Easiest: Quads",
-                "2. Middle: Calves",
-                "3. Hardest: Hamstrings and Glutes",
-            ]
+        conclusion_map = {
+            "long legs": [
+                "Conclusion [legs / long legs]:",
+                "Easiest to develop: Hamstrings & Glutes",
+                "Middle: Quads",
+                "Hardest: Overall Squatting Mechanics",
+            ],
+            "average legs - short tibia": [
+                "Conclusion [legs / avg legs - short tibia]:",
+                "Easiest to develop: Quads",
+                "Middle: Glutes",
+                "Hardest: Hamstrings",
+            ],
+            "average legs - long tibia": [
+                "Conclusion [legs / avg legs - long tibia]:",
+                "Easiest to develop: Glutes & Hamstrings",
+                "Middle: Quads",
+                "Hardest: Squat Depth/Balance",
+            ],
+            "short legs": [
+                "Conclusion [legs / short legs]:",
+                "Easiest to develop: Quads",
+                "Middle: Glutes",
+                "Hardest: Hamstrings",
+            ],
+        }
 
-            return {"long legs": long_legs, "conclusion": conclusion}
+        return {
+            leg_type: exercises_map.get(leg_type, []),
+            "conclusion": conclusion_map.get(leg_type, []),
+        }
 
-        elif 0.44 * self.height <= self.legs <= 0.47 * self.height:
-            if self.tibia >= 0.84 * self.femur:
-                average_legs_short_tibia: List[str] = [
-                    "[Squat pattern] Front Squat",
-                    "[Squat pattern] Heels Elevated Front Squat",
-                    "[Squat pattern] High Bar Heels Elevated Back Squat",
-                    "[Squat pattern] High Bar Heels Elevated Parallel Back Squat (Narrow Stance)",
-                    "[Hinge pattern] Deadlift [any variations]",
-                    "[Hip thrust] Will be effective, but not required unless want to max out the glutes",
-                    "[Single leg] Shorter Steps Walking Lunges",
-                    "[Single leg] Short Steps Bulgarian Split Squat",
-                    "[Single leg] Backwards Walking Lunges",
-                    "[Single leg] Backward Sled Pull",
-                    "[Assistance excercise] Hack Squat",
-                    "[Assistance excercise] Narrow Stance Leg Press",
-                    "[Assistance excercise] Leg Extension",
-                ]
-
-                conclusion: List[str] = [
-                    "Conclusion [short legs] -> order for easiest muscles to develop:",
-                    "1. Easiest: Glutes",
-                    "2. Middle: Hamstrings",
-                    "3. Hardest: Quads and Calves",
-                ]
-
-                return {
-                    "average legs - short tibia": average_legs_short_tibia,
-                    "conclusion": conclusion,
-                }
-
-            elif self.tibia <= 0.85 * self.femur:
-                average_legs_long_tibia: List[str] = [
-                    "[Squat pattern] Squat [and variations]",
-                    "[Hinge pattern] Front Feet Elevated Romanian Deadlift",
-                    "[Hip thrust] Back Extension",
-                    "[Hip thrust] Reverse Hypers",
-                    "[Single leg] Longer Steps Split Squat",
-                    "[Single leg] Single-Leg Romanian Deadlift",
-                    "[Single leg] Long Step Split Squat Front Foot Elevated",
-                    "[Single leg] Low Handles Prowler Pushing",
-                    "[Assistance excercise] Leg Curls",
-                    "[Assistance excercise] Wider Feet Leg Press",
-                    "[Assistance excercise] Glute-Ham Raise",
-                    "[Assistance excercise] Rope Pull-Through",
-                ]
-
-                conclusion: List[str] = [
-                    "Conclusion [long legs] -> order for easiest muscles to develop:",
-                    "1. Easiest: Quads",
-                    "2. Middle: Calves",
-                    "3. Hardest: Hamstrings and Glutes",
-                ]
-
-                return {
-                    "average legs - long tibia": average_legs_long_tibia,
-                    "conclusion": conclusion,
-                }
-
-        elif self.legs < 0.43 * self.height:
-            short_legs: List[str] = [
-                "[Squat pattern] Squat [and variations]",
-                "[Hinge pattern] Front Feet Elevated Romanian Deadlift",
-                "[Hip thrust] Back Extension",
-                "[Hip thrust] Reverse Hypers",
-                "[Single leg] Longer Steps Split Squat",
-                "[Single leg] Single-Leg Romanian Deadlift",
-                "[Single leg] Long Step Split Squat Front Foot Elevated",
-                "[Single leg] Low Handles Prowler Pushing",
-                "[Assistance excercise] Leg Curls",
-                "[Assistance excercise] Wider Feet Leg Press",
-                "[Assistance excercise] Glute-Ham Raise",
-                "[Assistance excercise] Rope Pull-Through",
-            ]
-
-            conclusion: List[str] = [
-                "Conclusion [short legs] -> order for easiest muscles to develop:",
-                "1. Easiest: Glutes",
-                "2. Middle: Hamstrings",
-                "3. Hardest: Quads and Calves",
-            ]
-
-            return {"short legs": short_legs, "conclusion": conclusion}
-
+    def leg_strategies(self) -> Dict[str, List[str]]:
+        if self.leg_length > self.torso_length:
+            leg_type = "long legs"
+        elif self.leg_length < self.torso_length:
+            if self.tibia_length < (self.leg_length * 0.45):
+                leg_type = "average legs - short tibia"
+            else:
+                leg_type = "average legs - long tibia"
         else:
-            return {
-                "message": ["No leg strategy matched the provided proportions."],
-                "conclusion": ["Please check the measurements."],
-            }
+            leg_type = "short legs"
+
+        return self._get_exercises_and_conclusion(leg_type)

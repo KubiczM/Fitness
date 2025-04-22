@@ -6,34 +6,38 @@ class Chest:
         self.wingspan: float = float(wingspan)
         self.height: float = float(height)
 
-    def _get_exercises_and_conclusion(
-        self, arm_type: str
-    ) -> Dict[str, Union[List[str], List[str]]]:
+    def _get_exercises_and_conclusion(self, arm_type: str) -> Dict[str, List[str]]:
         exercises_map = {
-            "long arms": [
-                "Bench Press",
-                "Dips",
-                "Incline Dumbbells Press",
-                "Cable Flies",
-                "Peck Deck",
-                "Incline Dumbbells Flies",
-            ],
-            "short arms": [
-                "Wide Grip Bench Press",
-                "Power Flies",
-                "Dumbbells Fly-Press",
-                "Peck Deck",
-                "Cable Flies",
-                "Squeeze Press",
-            ],
-            "average arms": [
-                "Incline Bench Press",
-                "Flat Bench Press",
-                "Chest Dips",
-                "Dumbbell Press",
-                "Cable Chest Press",
-                "Machine Chest Press",
-            ],
+            "long arms": {
+                "exercises": [
+                    "Bench Press",
+                    "Dips",
+                    "Incline Dumbbells Press",
+                    "Cable Flies",
+                    "Peck Deck",
+                    "Incline Dumbbells Flies",
+                ]
+            },
+            "short arms": {
+                "exercises": [
+                    "Wide Grip Bench Press",
+                    "Power Flies",
+                    "Dumbbells Fly-Press",
+                    "Peck Deck",
+                    "Cable Flies",
+                    "Squeeze Press",
+                ]
+            },
+            "average arms": {
+                "exercises": [
+                    "Incline Bench Press",
+                    "Flat Bench Press",
+                    "Chest Dips",
+                    "Dumbbell Press",
+                    "Cable Chest Press",
+                    "Machine Chest Press",
+                ]
+            },
         }
 
         conclusion = [
@@ -43,13 +47,16 @@ class Chest:
             "3. Hardest: Triceps",
         ]
 
-        exercises = exercises_map.get(arm_type, [])
-        return {"exercises": exercises, "conclusion": conclusion}
+        result = exercises_map.get(arm_type, {"exercises": []})
+        result["conclusion"] = conclusion
+        return result
 
-    def chest_strategies(self) -> Dict[str, Union[List[str], List[str]]]:
+    def chest_strategies(self) -> Dict[str, List[str]]:
         if self.wingspan > self.height:
-            return self._get_exercises_and_conclusion("long arms")
+            arm_type = "long arms"
         elif 0.95 * self.height <= self.wingspan <= 1.05 * self.height:
-            return self._get_exercises_and_conclusion("average arms")
+            arm_type = "average arms"
         else:
-            return self._get_exercises_and_conclusion("short arms")
+            arm_type = "short arms"
+
+        return self._get_exercises_and_conclusion(arm_type)

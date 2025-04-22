@@ -101,118 +101,85 @@ class PersonalInfo:
 
     def first_name_info(self) -> str:
         while True:
-
-            try:
-                self.first_name = input("First name: ").strip().title()
-                if not self.first_name.isalpha():
-                    raise ValueError("Invalid input, must contain only letters")
+            self.first_name = input("First name: ").strip().title()
+            if not self.first_name.isalpha():
+                print("Error: First name must contain only letters. Please try again.")
+            else:
                 return self.first_name
-            except ValueError as e:
-                print(f"Error: {e}. Please try again.")
 
     def last_name_info(self) -> str:
         while True:
-
-            try:
-                self.last_name = input("Last name: ").strip().title()
-                if not self.last_name.isalpha():
-                    raise ValueError("Invalid input, must contain only letters")
+            self.last_name = input("Last name: ").strip().title()
+            if not self.last_name.isalpha():
+                print("Error: Last name must contain only letters. Please try again.")
+            else:
                 return self.last_name
-            except ValueError as e:
-                print(f"Error: {e}. Please try again.")
 
     def sex_info(self) -> str:
         while True:
-            try:
-                self.sex = input("Gender [female/male]: ").strip().lower()
-                if not self.sex.isalpha() or self.sex not in ["female", "male"]:
-                    raise ValueError(
-                        "Invalid input, must contain only 'female' or 'male'"
-                    )
+            self.sex = input("Gender [female/male]: ").strip().lower()
+            if self.sex not in ["female", "male"]:
+                print("Error: Gender must be either 'female' or 'male'. Please try again.")
+            else:
                 return self.sex
-            except ValueError as e:
-                print(f"Error: {e}. Please try again.")
 
     def body_weight_info(self) -> float:
         while True:
-
             try:
                 self.body_weight = float(input("Body weight [kg]: ").strip())
+                if self.body_weight <= 0:
+                    print("Error: Body weight must be greater than 0 kg. Please try again.")
+                else:
+                    return self.body_weight
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
-                continue
-
-            if self.body_weight <= 0:
-                print("Error: Body weight must be greater than 0 kg. Please try again.")
-                continue
-
-            return self.body_weight
 
     def height_info(self) -> float:
         while True:
-
             try:
                 self.height = float(input("Height [cm]: ").strip())
+                if self.height <= 0:
+                    print("Error: Height must be greater than 0 cm. Please try again.")
+                else:
+                    return self.height
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
-                continue
-
-            if self.height <= 0:
-                print("Error: Height must be greater than 0 cm. Please try again.")
-                continue
-
-            return self.height
 
     def age_info(self) -> float:
         while True:
-
             try:
                 self.age = float(input("Age [years]: ").strip())
+                if self.age <= 0:
+                    print("Error: Age must be greater than 0 years. Please try again.")
+                else:
+                    return self.age
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
-                continue
-
-            if self.age <= 0:
-                print("Error: Age must be greater than 0 years. Please try again.")
-                continue
-
-            return self.age
 
     def activity_info(self) -> int:
         while True:
-
+            print(
+                "Specify your activity: 1 -> Low, 2 -> Moderate, 3 -> Active lifestyle, 4 -> Very active"
+            )
             try:
-                print(
-                    "Specify your activity: 1 -> Low, 2 -> Moderate, 3 -> Active lifestyle, 4 -> Very active"
-                )
-                self.activity = int(
-                    input("Enter a number [from the scale above]: ").strip()
-                )
+                self.activity = int(input("Enter a number [from the scale above]: ").strip())
+                if self.activity not in [1, 2, 3, 4]:
+                    print("Error: Activity must be a number between 1 and 4. Please try again.")
+                else:
+                    return self.activity
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
-                continue
-
-            if self.activity <= 0 or self.activity >= 5:
-                print("Activity must be a number from the given scale")
-                continue
-
-            return self.activity
 
     def balance_cal_info(self) -> int:
         while True:
+            print(
+                "Specify your calories balance: 1 -> Deficit, 2 -> N/A, 3 -> Surplus"
+            )
             try:
-                print(
-                    "Specify your calories balance: 1 -> Deficit, 2 -> N/A, 3 -> Surplus"
-                )
-                self.question = int(
-                    input("Enter a number [from the scale above]: ").strip()
-                )
+                self.question = int(input("Enter a number [from the scale above]: ").strip())
+                if self.question not in [1, 2, 3]:
+                    print("Error: Balance must be a number between 1 and 3. Please try again.")
+                else:
+                    return self.question
             except ValueError:
                 print("Error: Invalid input. Please enter a valid number.")
-                continue
-
-            if self.question <= 0 or self.question >= 4:
-                print("Calories balance must be a number from the given scale")
-                continue
-
-            return self.question
