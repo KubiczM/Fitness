@@ -1,9 +1,10 @@
 import os
 import json
 from operations.display_operations import display_client_data
+from typing import Dict, Optional
 
 
-def save_client_data(client_data):
+def save_client_data(client_data: Dict[str, any]) -> None:
     client_dir = f"clients/{client_data['first_name']}_{client_data['last_name']}"
     os.makedirs(client_dir, exist_ok=True)
 
@@ -16,7 +17,7 @@ def save_client_data(client_data):
     print(f"\nThe data has been saved to a file: {file_path}\n")
 
 
-def list_client_files(client_dir, selected_client):
+def list_client_files(client_dir: str, selected_client: str) -> None:
     client_dir_path = os.path.join("clients", client_dir)
     if os.path.exists(client_dir_path):
         print(f"\nFiles for {selected_client}:")
@@ -41,7 +42,7 @@ def list_client_files(client_dir, selected_client):
         print("Client files not found.")
 
 
-def list_saved_clients():
+def list_saved_clients()-> None:
     clients_dir = "clients"
     if os.path.exists(clients_dir):
         print("Saved Client Files:")
@@ -64,7 +65,7 @@ def list_saved_clients():
         print("No saved clients found.")
 
 
-def get_current_date():
+def get_current_date() -> str:
     from datetime import datetime
 
     return datetime.now().strftime("%d-%m-%Y")

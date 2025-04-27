@@ -1,4 +1,7 @@
-def display_client_data(client_data):
+from typing import Dict, Any
+
+
+def display_client_data(client_data: Dict[str, Any]) -> None:
     print(f"\nClient: {client_data['first_name']} {client_data['last_name']}")
     print(f"Body weight: {client_data['body_weight [kg]']} kg")
     print(f"Height: {client_data['height [cm]']} cm")
@@ -13,7 +16,7 @@ def display_client_data(client_data):
     print(f"  Ulna: {client_data['upper_limbs']['ulna [cm]']} cm")
     print(f"  Humerus: {client_data['upper_limbs']['humerus [cm]']} cm\n")
 
-    def print_strategy(title, strategy_dict):
+    def print_strategy(title: str, strategy_dict: Dict[str, list]) -> None:
         print(f"{title}")
         for key, value in strategy_dict.items():
             print(f"\n  {key.capitalize()}:")

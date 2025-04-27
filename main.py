@@ -2,7 +2,7 @@ from operations.clients_operations import create_client_data
 from operations.file_operations import list_saved_clients
 
 
-def run():
+def run() -> None:
     while True:
         print()
         choice = input(
