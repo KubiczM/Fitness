@@ -1,14 +1,14 @@
 class CalBalance:
-    def __init__(self, total_metabolic, question):
-        self.deficit_result = 0
-        self.over_cal_result = 0
-        self.question = question
-        self.total_metabolic = total_metabolic
+    def __init__(self, total_metabolic: object, question: int) -> None:
+        self.deficit_result: int = 0
+        self.over_cal_result: int = 0
+        self.question: int = question
+        self.total_metabolic: object = total_metabolic
 
-    def balance_cal(self):
+    def balance_cal(self) -> int:
         while True:
             if self.total_metabolic:
-                total_rate = self.total_metabolic.total_metabolic_rate
+                total_rate: int = self.total_metabolic.total_metabolic_rate
 
                 if self.question == 1:
                     self.deficit_result = total_rate - (total_rate * 0.15)
